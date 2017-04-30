@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import {Observable} from "rxjs/Observable";
+
 /*
   Generated class for the AuthService provider.
 
@@ -11,8 +13,13 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
-  constructor(public http: Http) {
-    console.log('Hello AuthService Provider');
-  }
+  api : string = "http://localhost:8080/api/api/";
 
+  constructor(public http: Http) { }
+
+      getData(){
+
+        this.http.get(this.api + "apiRecupera.php").map(res => res.json())
+
+      }
 }
